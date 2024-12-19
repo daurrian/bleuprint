@@ -1,0 +1,10 @@
+name = "blueprint"
+version = "0.1.0"
+defaultTargets = ["blueprint"]
+
+[[lean_lib]]
+name = "Blueprint"
+
+[[lean_exe]]
+name = "blueprint"
+root = "Main"
