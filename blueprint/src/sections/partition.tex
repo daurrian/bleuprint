@@ -1,0 +1,162 @@
+  \begin{definition}
+    Soit $(x_i)$ une suite de points du tore.
+    \begin{itemize}
+      \item On dit que $(x_i)$ est une $\eta$-pseudo-orbite si
+	$$\forall i \in \Z, d(f(x_i), x_{i+1}) \leq \eta.$$
+      \item On dit que $(x_i)$ est $\varepsilon$-pistée par l'orbite du point $x \in \T^n$ si
+	$$\forall i \in \Z, d(f^i(x), x_i) \leq \varepsilon.$$
+    \end{itemize}
+  \end{definition}
+
+  \begin{lemma}[Lemme de pistage]
+    Pour $\varepsilon > 0$, il existe un $\eta > 0$ tel que si $(x_i)$ est une $\eta$-pseudo-orbite,
+    alors il existe un unique point $x \in \T^n$ tel que $(x_i)$ est $\varepsilon$-pistée par l'orbite de $x$.
+  \end{lemma}
+
+  \begin{definition}
+    Soit $\varepsilon > 0$ et $x \in \T^n$.La variété stable locale de $f$ en $x$, notée $W^s_{\varepsilon}(x)$, est définie par
+    $$\Ws{x} = \left\{y \in \T^n \mid \forall n \geq 0, d(f^n(x), f^n(y)) \leq \varepsilon\right\},$$
+    et la variété instable locale de $f$ en $x$, notée $W_{\varepsilon}^u(x)$, donnée par
+    $$\Wu{x} = \left\{y \in \T^n \mid \forall n \leq 0, d(f^n(x), f^n(y)) \leq \varepsilon\right\}.$$
+  \end{definition}
+
+  \begin{remark}
+    La variété stable de $f$ en un point $x$ donne l'ensemble des points du tore qui ont le même "futur" que $x$ pour la dynamique donnée par $f$,
+    et la variété instable de $f$ donne les points qui ont le même "passé" que $x$ pour $f$.
+    On peut alors remarquer que pour que deux points aient le même futur,
+    il est nécessaire que ces deux points soient dans le même sous-espace affine dirigé par $E_s$.
+    Pour que deux points aient le même passé, il faut qu'ils soient sur le même sous-espace affine dirigé par $E_u$.
+  \end{remark}
+
+  \begin{proposition}
+    Soit $\varepsilon > 0$ et deux points $x, y$ du tore et $u, v \in \R^n$ tels que $p(u) = x, p(v)= y$.
+    Alors $\Ws{x} = p(B(u, \varepsilon) \cap (u + E_s))$ et $\Wu{x} = p(B(u, \varepsilon) \cap (u + E_u))$.
+  \end{proposition}
+
+  \begin{proposition}
+    Soit $\varepsilon > 0$ et $x, y \in \T^n$. Alors
+    \begin{enumerate}
+      \item $f(\Ws{x}) \subseteq \Ws{f(x)}$ et $f(\Wu{x}) \supseteq \Wu{f(x)}$,
+      \item si $d(x, y) \leq \varepsilon$, alors $\Ws{x} \cap \Wu{y}$ est un singleton, et on note $[x, y]$ son unique élément,
+      \item l'application $(x, y) \mapsto [x, y]$ est continue et on l'appelle produit local.
+    \end{enumerate}
+  \end{proposition}
+
+  \begin{proof}
+    Soit $y \in \Ws{x}$, alors pour tout $n \geq 0$, on a $d(f^n(x), f^n(y)) \leq \varepsilon$.
+    En particulier, pour tout $n \geq 0, d(f^n(f(x)), f^n(f(y))) \leq \varepsilon$, d'où $f(y) \in \Ws{f(x)}$.
+    De même pour l'inclusion pour les variétés instables, ce qui prouve le premier point.
+
+    Supposons que $d(x, y) \leq \varepsilon$,
+    on considère alors $u, v \in \R^n$ comme dans la proposition précédente et vérifiant $\No{u - v} \leq \varepsilon$.
+    Alors $\{w\} = (u + E_s) \cap (v + E_u)$ est un singleton,
+    car $E_s \oplus E_u = \R^n$ et donc $E_s \cap E_u = \{0\}$.
+    De plus $w \in B(u, \varepsilon) \cap B(v, \varepsilon) \not= \emptyset$ car
+    $u - w \in E_s$ et $v - w \in E_u$
+    $$\No{u - w} \leq \max\{\No{u-w}, \No{v- w}\} = \No{u - w + w - v} \leq \varepsilon.$$
+    Ainsi, $p(w) \in \Ws{x} \cap \Wu{y}$ et c'est le seul élément dans cette intersection.
+
+    Pour la continuité du produit local, remarquons pour que $[x, y] \in B(z, \delta)$ alors $x \in B(z, r)$ et $y \in B(z, r)$
+    où $r = \min\{\varepsilon, \delta\}$, et $d(x, y) \leq \varepsilon$.
+  \end{proof}
+
+  \begin{definition}
+    Soit $\mathcal R \subseteq \T^n$. On dit que $\mathcal R$ est un rectangle dès lors que
+    $$\forall x, y \in \mathcal R, \hspace{0.5em} [x, y] \in \mathcal R.$$
+    On dira que $\mathcal R$ est un rectangle propre si c'est un rectangle et que $ \mathcal R = \overline{\mathring{\mathcal R}}$.
+
+    De plus, quand $\mathcal R$ est un rectangle, on notera
+    $$\Ws[\mathcal R]{x} = \Ws{x} \cap \mathcal R \hspace{0.8em}\text{et}\hspace{0.8em} \Wu[\mathcal R]{x} = \Wu{x} \cap \mathcal R.$$
+  \end{definition}
+
+  \begin{proposition} \label{prop:bord}
+    Soit $R$ un rectangle de $\T^n$. Alors en identifiant par rapport aux sous-espaces stables et instables,
+    on peut décomposer le bord de $R$ sous la forme $\partial R = \partial^s R \cup \partial^u R$,
+    avec $\partial^s R = \{x \in R \mid \Ws{x} \cap \Int{R} = \emptyset\}$
+    et $\partial^u R = \{x \in R \mid \Wu{x} \cap \Int{R}   = \emptyset\}$.
+  \end{proposition}
+
+  On peut enfin introduire la notion de partition de Markov, qui permet de coder la dynamique de $f$  dans un espace de Bernoulli.
+
+  \begin{definition}
+    Une partition de Markov de $\T^n$ est un recouvrement fini $\mathcal R = (R_i)$ de $\T^n$ par des rectangles propres vérifiant :
+    \begin{enumerate}
+      \item pour tout $i \not= j$, on a $\mathring{R_i} \cap \mathring{R_j} = \emptyset$,
+      \item si $x \in \mathring R_i$ et $f(x) \in \mathring R_j$, alors
+	$$\left\{\begin{array}{l}
+	    f(\Ws[R_i]{x}) \subseteq \Ws[R_j]{f(x)}, \vspace{0.3em}\\
+	  f(\Wu[R_i]{x}) \supseteq \Wu[R_j]{f(x)}.
+	\end{array}\right.$$
+    \end{enumerate}
+
+    De plus, la matrice d'incidence $A$ (dont les coefficients sont dans $\{0, 1\}$) associé à la partition de Markov $\mathcal R$ est donnée par
+    $$A_{i,j} = 1 \iff f(\mathring R_i) \cap \mathring R_j \not= \emptyset.$$
+  \end{definition}
+
+  \begin{theorem} \label{th:markov}
+    Soit $\mathcal R = (R_i)_{1 \leq i \leq m}$ une partition de Markov et
+    $(\s_A, \sigma)$ l'espace de Bernoulli associé à la matrice d'incidence $A$ de la partition $\mathcal R$.
+    Alors,
+    \begin{enumerate}
+      \item pour $\omega \in \s_A$, l'intersection $\bigcap_{i \in \Z}{f^{-i}(R_{\omega_i})}$ est un singleton et on note $\pi(\omega)$ cet unique élément,
+      \item l'application $\pi \colon \s_A \longrightarrow \T^n$ est continue, surjective et $f \circ \pi = \pi \circ \sigma$,
+      \item si $\mu \in \Mss{A}$ est ergodique de support $\s_A$, alors
+	$$\mu \left\{\omega \in \s_A \mid \Card{\pi^{-1}(\pi(\omega))} > 1\right\} = 0.$$
+    \end{enumerate}
+  \end{theorem}
+
+  De cette manière, on peut considérer que $\pi$ est injective quitte à retirer un ensemble
+  de mesure nulle pour certaines mesures (en particulier la mesure de Gibbs de la section précédente).
+  La dynamique de $f$ sur le tore peut alors être codée par un sous-décalage de $\s_m$,
+  permettant ainsi une étude plus simple de cette dynamique, et notamment de munir ces systèmes de mesures de probabilités.
+  En effet si $\mu$ est la mesure de Gibbs sur $\s_A$,
+  alors la mesure $\pi_* \mu$ vérifie des propriétés sur le tore semblable à celle vérifiée sur $\s_A$.
+
+  \begin{proof}[Preuve du théorème \ref{th:markov}]
+    Soit $\omega \in \s_A$. Posons $K_n(\omega) = \bigcap_{i=-n}^n{f^{-i}(R_{\omega_i})}$ qui est un compact non vide pour tout $n \geq 1$.
+    De plus la suite $(K_n(\omega))_{n \geq 1}$ est décroissante.
+    Ainsi, en tant qu'intersection décroissante de compact non vide,
+    $$K = \bigcap_{i\in\Z}{f^{-i}(R_{\omega_i})} = \bigcap_{i\geq 1}{K_i(\omega)}$$
+    est un compact non vide de $\T^n$.
+    Reste à vérifier que $K$ contient au plus un élément.
+    Supposons par l'absurde que $x, y \in K$, alors pour tout $i \in \Z$ on a,
+    en supposant que les rectangles de la partition de Markov sont de diamètre au plus $\varepsilon$,
+    $$d(f^i(x), f^i(y)) \leq \varepsilon,$$
+    donc les deux points ont des orbites que se $\varepsilon$-pistent, et par le lemme de pistage il ne peut y en avoir qu'un.
+    D'où $x=y$, et finalement $K$ est un singleton et $\pi(\omega)$ est son unique élément.
+
+    Ensuite, $\pi$ vérifie la relation de semi-conjugaison car
+    $$K(\sigma\omega) = \bigcap_{i\in\Z}{f^{-i}(R_{\omega_{i+1}})} = f(\bigcap_{i\in\Z}{f^{-i}(R_{\omega_i})}) = f(K(\omega)),$$
+    et donc $\pi \circ \sigma = f \circ \pi$.
+
+    Concernant la surjectivité de $\pi$, soit $x \in \T^n$.
+    On pose alors $\omega \in \s_A$ de sorte que $f^i(x) \in R_{\omega_i}$,
+    ce qui est possible car $\mathcal R$ est un recouvrement de $\T^n$ et
+    un tel $\omega$ est bien dans $\s_A$ par construction de $\s_A$.
+    Ainsi $x \in \bigcap_{i\in\Z}{f^{-i}(R_{\omega_i})} = \{\pi(\omega)\}$.
+
+    Pour la continuité de $\pi$, si on considère une boule $B$ centrée en $x$ et de rayon $r > 0$,
+    alors, il existe $N \in \N$ tel que
+    $$\diam{\left(\bigcap_{-N\leq i\leq N}{f^{-i}(R_{\omega_i})}\right)} \leq r.$$
+    Ce dernier ensemble est bien un ouvert de $\s_A$ donc un voisinage de $\omega$ et $\pi(K_N(\omega)) \subseteq B$.
+
+    Il reste encore le point (3) à démontrer.
+    Soit $\mu$ une mesure de probabilité $\sigma$-invariante, ergodique et de support $\s_A$.
+    Alors $\nu = \pi_*\mu$ la mesure image de $\mu$ par $\pi$ est aussi ergodique, $f$-invariante et de support $\T^n$.
+    Si on note $Z = \left\{x \in \T^n \mid \Card{\pi^{-1}(x)} > 1\right\}$, alors le point (3) est équivalent à $\nu(Z) = 0$.
+    Nécessairement, $Z  \subseteq \bigcup_{i \in \Z}{f^i(\partial \mathcal R)}$,
+    il suffit donc de montrer que ce dernier est de mesure nulle pour $\nu$.
+    On note $\partial \mathcal R = \partial^u\mathcal R \cup \partial^s\mathcal R$,
+    où $\partial^s \mathcal R = \bigcup_{R\in\mathcal R}\partial^s R$ et de même pour $\partial^u \mathcal R$.
+    Or par la propriété (2) des partitions de Markov, $f(\partial^s\mathcal R) \subseteq \partial^s\mathcal R$,
+    et donc la suite $(f^i(\partial^s\mathcal R))_i$ est décroissante,
+    d'où par continuité décroissante et invariance de $\nu$ par rapport à $f$ :
+    $$\nu\left(\bigcap_{i\geq 0}{f^i(\partial^s\mathcal R)}\right)
+		    = \lim_{i\to\infty}{\nu\left(f^i(\partial^s\mathcal R)\right)} = \nu(\partial^s \mathcal R).$$
+    Or l'ensemble $F = \bigcap_{i\geq 0}{f^i(\partial^s \mathcal R)}$ vérifie $f^{-1}(F) = F$,
+    donc par ergodicité de $\nu$, il est ou bien de mesure nulle ou égale à 1,
+    cette dernière possibilité est exclue car $\nu$ est de support $\T^n$ et $F$ est strictement inclus dans le tore.
+    Donc $\nu(F) = 0$, c'est-à-dire que $\nu(\partial^s \mathcal R) = 0$.
+    On fait de même pour $\partial^u \mathcal R$ et on en conclut que $0 = \nu(\partial \mathcal R) \geq \nu(Z)$.
+    Finalement, on a bien $\nu(Z) = 0$.
+  \end{proof}

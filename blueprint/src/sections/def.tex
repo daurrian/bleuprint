@@ -1,0 +1,45 @@
+  Soit $f$ un endomorphisme linéaire bijectif de $E = \R^n$.
+  On pose $\Spe_{-}f = \{\lambda \in \Spe f \mid |\lambda| < 1\}$ et $\Spe_{+} = \{\lambda \in \Spe{f} \mid |\lambda| > 1\}$.
+  On peut maintenant définir le sous-espace stable $E_s$ et le sous-espace instable $E_u$ de $f$ par
+  $$\left\{\begin{array}{ll}
+    E_s &= \bigoplus\limits_{\lambda \in \Spe_-{f}} E_{\lambda}(f),\vspace{0.5em} \\
+    E_u &= \bigoplus\limits_{\lambda \in \Spe_+{f}} E_{\lambda}(f), \\
+  \end{array}\right.$$
+
+  On dira qu'une norme $\No{\cdot}$ est adaptée à $f$ si pour tout $v_s \in E_s$ et $v_u \in E_u$ on a
+  $$\No{v_s + v_u} = \max{\{\No{v_s}, \No{v_u}\}}.$$
+
+  On introduit maintenant les endomorphismes linéaires du tore $\T^n = \R^n / \Z^n$. Pour ce faire,
+  dans toute la suite on notera $p \colon \R^n \longrightarrow \T^n$ la projection de $\R^N$ sur le tore.
+  De plus, si $\No{\cdot}$ est une norme sur $R^n$, on définit la distance quotient $d$ sur le tore donnée par
+  $$\forall x, y \in \T^n, d(x, y) = \inf\left\{\No{u -v} \mid u, v \in \R^n, p(u) = x, p(v) = y\right\}.$$
+
+  \begin{proposition}
+    Soit $M$ une matrice de taille $n\times n$ et $f = f_M$ l'endomorphisme associé à $M$.
+    Si $M$ est à coefficients entiers, alors $f$ se factorise en un endomorphisme du tore $\T^n$.
+  \end{proposition}
+
+  \begin{proof}
+    Si $M$ est à coefficients entiers, si on considère $x \in \R^n, y \in \Z^n$ alors $M(x + y) = Mx + My \in Mx + \Z^n$,
+    et donc $M(x + y) \equiv Mx$ dans $\T^n$. Ainsi $f$ se factorise sur le tore en $\tilde{f}(x) = Mx \pmod 1$,
+    de sorte que $p \circ f = \tilde f \circ p$.
+  \end{proof}
+
+  \begin{proposition}
+    Soit $M \in M_n(\Z)$. Alors $M$ est inversible dans $M_n(\Z)$ si et seulement si $\det M = \pm 1$.
+  \end{proposition}
+
+  \begin{definition}
+    Soit $M$ une matrice à coefficients entiers.
+    On dit qu'une matrice inversible $M$ est hyperbolique si elle possède $n$ valeurs propres (comptées avec leur multiplicité)
+    de module différent de $1$ \textit{ie.} $\Spe{f} \cap \S^1 = \emptyset$ et que $E = E_s \oplus E_u$.
+
+    On dit qu'un automorphisme $f = f_M$ du tore $\T^n$ est hyperbolique si la matrice $M$ est hyperbolique et de déterminant $\pm 1$.
+  \end{definition}
+
+  \begin{remark}
+    D'un point de vue géométrique, un automorphisme hyperbolique dilate l'espace $E_u$ et contracte $E_s$.
+  \end{remark}
+
+  Désormais, dans toute la suite on notera $f$ un automorphisme hyperbolique du tore $\T^n$ associé à la matrice $M$ et $\No{\cdot}$
+  une norme adaptée à la décomposition de cette matrice en somme de sous-espaces stable et instable.

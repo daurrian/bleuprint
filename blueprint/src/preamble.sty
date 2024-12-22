@@ -1,0 +1,94 @@
+\ProvidesPackage{preamble}
+
+% \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{titlesec}
+\geometry{a4paper, margin=1in}
+\linespread{1.25}
+
+% \usepackage{minted}
+% \usemintedstyle{tango}
+
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage{bbold}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{csquotes}
+% \usepackage[
+%   backend=biber,
+%   style=alphabetic
+% ]{biblatex}
+
+% \graphicspath{{./images/}}
+
+\newcommand{\R}{\mathbf R}
+\newcommand{\C}{\mathbf C}
+\newcommand{\N}{\mathbf N}
+\newcommand{\Z}{\mathbf Z}
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\K}{\mathbf K}
+\newcommand{\T}{\mathbf T}
+\renewcommand{\S}{\mathbf S}
+\newcommand{\s}{\Sigma}
+\renewcommand{\sp}{\Sigma^+}
+\newcommand{\Sp}{\Sigma^+}
+\newcommand{\Cs}[1]{\mathcal{C} (\Sigma_{#1})}
+\newcommand{\Csp}[1]{\mathcal{C} (\Sigma_{#1}^+)}
+\newcommand{\Hs}[1]{\mathcal{H} (\Sigma_{#1})}
+\newcommand{\Hsp}[1]{\mathcal{H} (\Sigma_{#1}^+)}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\Ms}[1]{\mathcal{M}(\Sigma_{#1})}
+\newcommand{\Mss}[1]{\mathcal{M}_{\sigma}(\Sigma_{#1})}
+\newcommand{\Msp}[1]{\mathcal{M} (\Sigma_{#1}^+)}
+\renewcommand{\No}[1]{\left\lVert #1\right\rVert}
+\newcommand{\Cr}[1]{\mathcal C_{#1}}
+\newcommand{\ind}[1]{\mathbf{1}_{#1}}
+\newcommand{\Bo}[1]{\mathcal{B}(#1)}
+\newcommand{\Ws}[2][\varepsilon]{W^s_{#1}(#2)}
+\newcommand{\Wu}[2][\varepsilon]{W^u_{#1}(#2)}
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\Spe}{Sp}
+\DeclareMathOperator{\Card}{Card}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\diam}{diam}
+
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[CO]{\rightmark}
+\fancyhead[CE]{\nouppercase{\leftmark}}
+
+\renewcommand{\thesection}{\Roman{section}}
+
+% \newcounter{count}[section]
+%
+% \theoremstyle{definition}
+% \newtheorem{definition}{Définition}[subsection]
+% \newtheorem*{definition*}{Définition}
+%
+% \theoremstyle{remark}
+% \newtheorem*{remark}{Remarque}
+%
+% \theoremstyle{plain}
+% \newtheorem{theorem}{Théorème}[subsection]
+% \newtheorem*{theorem*}{Théorème}
+%
+% \newtheorem{corollary}[theorem]{Corollaire}
+% \newtheorem{lemma}[theorem]{Lemme}
+% \newtheorem{proposition}[theorem]{Proposition}
+\addto\captionsfrench{\renewcommand\proofname{Preuve}}
+\addto\captionsfrench{\renewcommand*\contentsname{\textsc{Table des matières}}}
+
+\titleformat{\section}[frame]{\Large\bfseries}{\hspace{1em}\thesection.\hspace{1em}}{1em}{\centering}
+\titlespacing{\section}{0pt}{2em}{3em}
